@@ -2,17 +2,20 @@
 import nextMDX from "@next/mdx";
 //const withMDX = require("@next/mdx")();
 
-
 const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
   // Configure `pageExtensions` to include MDX files
-  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"]
 };
 //export default nextConfig;
 const withMDX = nextMDX({
     extension: /\.mdx?$/,
     options: {
-    //   remarkPlugins: [remarkGfm],
-    //   rehypePlugins: [rehypePrism],
+      remarkPlugins: [],
+      rehypePlugins: [],
+      // providerImportSource: '@mdx-js/react',
+      // providerImportSource: "@mdx-js/react",
     },
   });
   

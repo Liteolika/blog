@@ -6,7 +6,7 @@ import fs from "fs";
 import matter from "gray-matter";
 
 function getPostContent(slug: string[]) {
-  const folder = "blogs/";
+  const folder = "data/blogs/";
   const file = folder + `${slug.join("/")}.md`;
   const content = fs.readFileSync(file, "utf8");
 
@@ -15,21 +15,22 @@ function getPostContent(slug: string[]) {
 }
 
 export const generateStaticParams = async () => {
-  const posts = getPostMetadata("blogs");
-  return posts.map((post) => ({ slug: post.slug }));
+  const posts = getPostMetadata("data/blogs");
+  return posts.map((post) => ({ 
+    slug: post.slug 
+  }));
 };
 
 export async function generateMetadata({ params, searchParams }: { params: any, searchParams: any }) {
   const id = params?.slug ? " ⋅ " + params?.slug : "";
   return {
-    title: `The Bubbly Baker ${id.replaceAll("_", " ")}`,
+    title: `Peters blog - ${id.replaceAll("_", " ")}`,
   };
 }
 
 export default function RecipePage(props: any) {
   const slug = props.params.slug;
   const post = getPostContent(slug);
-  // console.log(post);
   return (
     <main>
       <article>

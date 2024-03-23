@@ -7,7 +7,7 @@ import daisyui from "daisyui";
 module.exports = {
   corePlugins: {
     // Preflight is a CSS reset
-    preflight: true,
+    // preflight: true,
   },
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
